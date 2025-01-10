@@ -20,9 +20,10 @@ document.addEventListener('DOMContentLoaded', () => {
     // Añadir una nueva tarea
     function addTask(task, completed = false) {
         const li = document.createElement('li');
+        li.classList.add('todo-item');
         li.innerHTML = `
             <input type="checkbox" class="complete-checkbox" ${completed ? 'checked' : ''}>
-            <span class="${completed ? 'completed' : ''}">${task}</span>
+            <span class="text ${completed ? 'completed' : ''}">${task}</span>
             <button class="edit-button">✏️</button>
             <button class="delete-button">❌</button>
         `;
@@ -57,7 +58,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Guardar tareas en el almacenamiento local
     function saveTasks() {
         const tasks = [];
-        todoList.querySelectorAll('li').forEach(li => {
+        todoList.querySelectorAll('.todo-item').forEach(li => {
             tasks.push({
                 task: li.querySelector('span').textContent,
                 completed: li.querySelector('.complete-checkbox').checked

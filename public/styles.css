@@ -84,7 +84,7 @@ button:hover {
 
 .todo-item .text {
     flex: 1;
-    font-size: 25px; /* Match the font size of buttons */
+    font-size: 16px; /* Match the font size of buttons */
 }
 
 .todo-item .delete-button {
