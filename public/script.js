@@ -2,6 +2,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const todoForm = document.getElementById('todo-form');
     const todoInput = document.getElementById('todo-input');
     const todoList = document.getElementById('todo-list');
+    const loadTasksButton = document.getElementById('load-tasks-button');
 
     // Cargar tareas desde el almacenamiento local
     loadTasks();
@@ -15,6 +16,11 @@ document.addEventListener('DOMContentLoaded', () => {
             todoInput.value = '';
             saveTasks();
         }
+    });
+
+    // Manejar clic en el botón para ver tareas guardadas
+    loadTasksButton.addEventListener('click', () => {
+        loadTasks();
     });
 
     // Añadir una nueva tarea
@@ -69,6 +75,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Cargar tareas desde el almacenamiento local
     function loadTasks() {
+        todoList.innerHTML = ''; // Limpiar la lista antes de cargar las tareas
         const tasks = JSON.parse(localStorage.getItem('tasks')) || [];
         tasks.forEach(task => addTask(task.task, task.completed));
     }
